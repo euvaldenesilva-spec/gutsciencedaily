@@ -3,26 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src *; script-src * 'unsafe-inline'; style-src * 'unsafe-inline'">
 <title>Gut Science Daily — Recommended Supplements</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --black: #040810;
-    --navy: #060d1a;
     --green: #00ff88;
-    --green-dim: #00cc6a;
-    --green-glow: rgba(0,255,136,0.15);
-    --green-dark: #003d20;
-    --teal: #00d4aa;
+    --yellow: #FFD600;
     --white: #f0f4f8;
     --gray: #8899aa;
     --card-bg: rgba(0,255,136,0.03);
     --card-border: rgba(0,255,136,0.12);
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     background: var(--black);
     color: var(--white);
@@ -30,21 +23,16 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
-
-  /* Animated background */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     background: 
       radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0,255,136,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(0,212,170,0.05) 0%, transparent 50%),
-      radial-gradient(ellipse 30% 30% at 20% 60%, rgba(0,255,136,0.04) 0%, transparent 50%);
+      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(0,212,170,0.05) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
   }
-
-  /* Particle grid */
   body::after {
     content: '';
     position: fixed;
@@ -56,7 +44,6 @@
     pointer-events: none;
     z-index: 0;
   }
-
   .container {
     max-width: 900px;
     margin: 0 auto;
@@ -64,14 +51,10 @@
     position: relative;
     z-index: 1;
   }
-
-  /* ── HEADER ── */
   header {
     padding: 60px 0 40px;
     text-align: center;
-    position: relative;
   }
-
   .channel-badge {
     display: inline-flex;
     align-items: center;
@@ -86,9 +69,7 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 32px;
-    animation: fadeDown 0.8s ease forwards;
   }
-
   .badge-dot {
     width: 6px;
     height: 6px;
@@ -96,65 +77,47 @@
     border-radius: 50%;
     animation: pulse 2s infinite;
   }
-
   @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.4; transform: scale(0.8); }
   }
-
   h1 {
     font-size: clamp(36px, 6vw, 72px);
     font-weight: 800;
     line-height: 1.0;
     letter-spacing: -2px;
     margin-bottom: 8px;
-    animation: fadeDown 0.8s 0.1s ease both;
   }
-
   h1 span {
     color: var(--green);
     text-shadow: 0 0 40px rgba(0,255,136,0.5);
   }
-
   .header-sub {
     font-size: 13px;
     color: var(--gray);
     font-family: 'Space Mono', monospace;
     letter-spacing: 1px;
-    margin-bottom: 40px;
-    animation: fadeDown 0.8s 0.2s ease both;
+    margin-bottom: 24px;
   }
-
   .hero-tagline {
-    font-size: clamp(16px, 2vw, 20px);
+    font-size: clamp(15px, 2vw, 18px);
     color: rgba(240,244,248,0.7);
-    font-weight: 400;
     max-width: 560px;
     margin: 0 auto 48px;
     line-height: 1.6;
-    animation: fadeDown 0.8s 0.3s ease both;
   }
-
-  .hero-tagline strong {
-    color: var(--green);
-    font-weight: 700;
-  }
-
-  /* Divider */
+  .hero-tagline strong { color: var(--green); font-weight: 700; }
   .divider {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin: 48px 0 40px;
-    animation: fadeIn 1s 0.4s ease both;
+    margin: 32px 0 40px;
   }
-
   .divider-line {
     flex: 1;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(0,255,136,0.3), transparent);
   }
-
   .divider-text {
     font-family: 'Space Mono', monospace;
     font-size: 10px;
@@ -162,153 +125,30 @@
     letter-spacing: 3px;
     text-transform: uppercase;
   }
-
-  /* ── PRODUCT CARDS ── */
   .products-grid {
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin-bottom: 60px;
   }
-
   .product-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 16px;
-    padding: 32px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 24px;
+    padding: 28px;
     transition: all 0.3s ease;
-    animation: fadeUp 0.6s ease both;
-    position: relative;
-    overflow: hidden;
   }
-
-  .product-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
   .product-card:hover {
     border-color: rgba(0,255,136,0.35);
     transform: translateY(-2px);
-    box-shadow: 0 8px 40px rgba(0,255,136,0.08), 0 0 0 1px rgba(0,255,136,0.1);
+    box-shadow: 0 8px 40px rgba(0,255,136,0.08);
   }
-
-  .product-card:hover::before { opacity: 1; }
-
-  .product-card:nth-child(1) { animation-delay: 0.1s; }
-  .product-card:nth-child(2) { animation-delay: 0.2s; }
-  .product-card:nth-child(3) { animation-delay: 0.3s; }
-  .product-card:nth-child(4) { animation-delay: 0.4s; }
-
-  .product-icon {
-    width: 56px;
-    height: 56px;
-    background: rgba(0,255,136,0.08);
-    border: 1px solid rgba(0,255,136,0.2);
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 26px;
-    flex-shrink: 0;
-  }
-
-  .product-info { flex: 1; }
-
-  .product-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
-    color: var(--green);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    opacity: 0.8;
-  }
-
-  .product-name {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 6px;
-    letter-spacing: -0.5px;
-  }
-
-  .product-desc {
-    font-size: 13px;
-    color: var(--gray);
-    line-height: 1.5;
-    font-weight: 400;
-  }
-
-  .product-benefits {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 10px;
-  }
-
-  .benefit-tag {
-    background: rgba(0,255,136,0.06);
-    border: 1px solid rgba(0,255,136,0.15);
-    border-radius: 100px;
-    padding: 3px 10px;
-    font-size: 10px;
-    color: rgba(0,255,136,0.8);
-    font-family: 'Space Mono', monospace;
-  }
-
-  .product-cta {
-    flex-shrink: 0;
-  }
-
-  .btn-order {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--green);
-    color: var(--black);
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    padding: 12px 22px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    letter-spacing: 0.3px;
-  }
-
-  .btn-order:hover {
-    background: #00ff99;
-    transform: scale(1.04);
-    box-shadow: 0 4px 20px rgba(0,255,136,0.4);
-  }
-
-  .btn-arrow {
-    font-size: 16px;
-    transition: transform 0.2s ease;
-  }
-
-  .btn-order:hover .btn-arrow { transform: translateX(3px); }
-
-  /* Featured card */
   .product-card.featured {
     border-color: rgba(0,255,136,0.25);
     background: rgba(0,255,136,0.05);
   }
-
   .featured-badge {
-    position: absolute;
-    top: 16px;
-    right: 16px;
+    display: inline-block;
     background: var(--green);
     color: var(--black);
     font-family: 'Space Mono', monospace;
@@ -318,86 +158,118 @@
     text-transform: uppercase;
     padding: 4px 10px;
     border-radius: 100px;
+    margin-bottom: 16px;
   }
-
-  /* ── FREE PDF SECTION ── */
-  .pdf-section {
-    background: linear-gradient(135deg, rgba(0,255,136,0.08) 0%, rgba(0,212,170,0.05) 100%);
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+  .product-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(0,255,136,0.08);
     border: 1px solid rgba(0,255,136,0.2);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .product-info { flex: 1; }
+  .product-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--green);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    opacity: 0.8;
+  }
+  .product-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .product-desc {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  .product-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 12px 0 20px;
+  }
+  .benefit-tag {
+    background: rgba(0,255,136,0.06);
+    border: 1px solid rgba(0,255,136,0.15);
+    border-radius: 100px;
+    padding: 3px 10px;
+    font-size: 10px;
+    color: rgba(0,255,136,0.8);
+    font-family: 'Space Mono', monospace;
+  }
+  .btn-order {
+    display: block;
+    width: 100%;
+    background: var(--green);
+    color: #040810;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 15px 22px;
+    border-radius: 100px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .btn-order:hover {
+    background: #00ff99;
+    box-shadow: 0 4px 20px rgba(0,255,136,0.5);
+    transform: translateY(-2px);
+  }
+  .pdf-section {
+    background: linear-gradient(135deg, rgba(255,214,0,0.06) 0%, rgba(0,212,170,0.04) 100%);
+    border: 1px solid rgba(255,214,0,0.25);
     border-radius: 20px;
     padding: 40px;
     text-align: center;
-    margin-bottom: 60px;
-    position: relative;
-    overflow: hidden;
-    animation: fadeUp 0.6s 0.5s ease both;
+    margin-bottom: 40px;
   }
-
-  .pdf-section::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(0,255,136,0.1) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .pdf-emoji {
-    font-size: 48px;
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .pdf-title {
-    font-size: 28px;
-    font-weight: 800;
-    margin-bottom: 8px;
-    letter-spacing: -1px;
-  }
-
-  .pdf-title span { color: var(--green); }
-
-  .pdf-desc {
-    color: var(--gray);
-    font-size: 14px;
-    margin-bottom: 28px;
-    line-height: 1.6;
-  }
-
+  .pdf-emoji { font-size: 48px; margin-bottom: 16px; display: block; }
+  .pdf-title { font-size: 26px; font-weight: 800; margin-bottom: 8px; letter-spacing: -1px; }
+  .pdf-title span { color: var(--yellow); }
+  .pdf-desc { color: var(--gray); font-size: 14px; margin-bottom: 28px; line-height: 1.6; }
   .btn-pdf {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     background: transparent;
-    color: var(--green);
+    color: var(--yellow);
     font-family: 'Syne', sans-serif;
     font-weight: 700;
-    font-size: 14px;
-    padding: 14px 32px;
+    font-size: 15px;
+    padding: 14px 36px;
     border-radius: 100px;
     text-decoration: none;
-    border: 2px solid var(--green);
+    border: 2px solid var(--yellow);
     transition: all 0.2s ease;
-    letter-spacing: 0.3px;
+    cursor: pointer;
   }
-
   .btn-pdf:hover {
-    background: var(--green);
+    background: var(--yellow);
     color: var(--black);
-    box-shadow: 0 4px 30px rgba(0,255,136,0.3);
+    box-shadow: 0 4px 30px rgba(255,214,0,0.35);
     transform: translateY(-2px);
   }
-
-  /* ── YOUTUBE SECTION ── */
-  .youtube-section {
-    text-align: center;
-    margin-bottom: 60px;
-    animation: fadeUp 0.6s 0.6s ease both;
-  }
-
+  .youtube-section { text-align: center; margin-bottom: 60px; }
   .yt-label {
     font-family: 'Space Mono', monospace;
     font-size: 10px;
@@ -406,7 +278,6 @@
     text-transform: uppercase;
     margin-bottom: 12px;
   }
-
   .btn-youtube {
     display: inline-flex;
     align-items: center;
@@ -421,34 +292,25 @@
     border-radius: 100px;
     text-decoration: none;
     transition: all 0.2s ease;
+    cursor: pointer;
   }
-
   .btn-youtube:hover {
     background: rgba(255,0,0,0.1);
     border-color: rgba(255,80,80,0.4);
     color: #ff6666;
     transform: translateY(-2px);
   }
-
-  .yt-icon {
-    font-size: 18px;
-  }
-
-  /* ── FOOTER ── */
   footer {
     border-top: 1px solid rgba(255,255,255,0.06);
     padding: 32px 0 40px;
     text-align: center;
-    animation: fadeIn 1s 0.7s ease both;
   }
-
   .footer-logo {
     font-size: 16px;
     font-weight: 700;
     color: var(--green);
     margin-bottom: 12px;
   }
-
   .disclaimer {
     font-size: 11px;
     color: rgba(136,153,170,0.6);
@@ -457,42 +319,15 @@
     margin: 0 auto;
     font-family: 'Space Mono', monospace;
   }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
-    .product-card {
-      grid-template-columns: auto 1fr;
-      grid-template-rows: auto auto;
-    }
-    .product-cta {
-      grid-column: 1 / -1;
-    }
-    .btn-order { width: 100%; justify-content: center; }
+    .card-top { flex-direction: column; }
     .pdf-section { padding: 28px 20px; }
   }
 </style>
 </head>
 <body>
-
 <div class="container">
 
-  <!-- HEADER -->
   <header>
     <div class="channel-badge">
       <span class="badge-dot"></span>
@@ -501,105 +336,98 @@
     <h1>Rebuild Your<br><span>Microbiome</span></h1>
     <p class="header-sub">evidence-based supplements — reviewed on the channel</p>
     <p class="hero-tagline">
-      Every product below was selected based on <strong>clinical research</strong> 
+      Every product below was selected based on <strong>clinical research</strong>
       and alignment with the gut health science we cover every week.
     </p>
   </header>
 
-  <!-- SUPPLEMENTS DIVIDER -->
   <div class="divider">
     <div class="divider-line"></div>
     <span class="divider-text">Recommended Supplements</span>
     <div class="divider-line"></div>
   </div>
 
-  <!-- PRODUCT CARDS -->
   <div class="products-grid">
 
-    <!-- PrimeBiome -->
     <div class="product-card featured">
       <span class="featured-badge">⭐ Top Pick</span>
-      <div class="product-icon">🌿</div>
-      <div class="product-info">
-        <div class="product-tag">Gut + Skin Microbiome</div>
-        <div class="product-name">PrimeBiome</div>
-        <div class="product-desc">Probiotic formula designed to support gut microbiome diversity and the gut-skin connection. Ideal for rebuilding a damaged microbiome from within.</div>
-        <div class="product-benefits">
-          <span class="benefit-tag">Gut Diversity</span>
-          <span class="benefit-tag">Skin Health</span>
-          <span class="benefit-tag">Immune Support</span>
+      <div class="card-top">
+        <div class="product-icon">🌿</div>
+        <div class="product-info">
+          <div class="product-tag">Gut + Skin Microbiome</div>
+          <div class="product-name">PrimeBiome</div>
+          <div class="product-desc">Probiotic formula designed to support gut microbiome diversity and the gut-skin connection. Ideal for rebuilding a damaged microbiome from within.</div>
         </div>
       </div>
-      <div class="product-cta">
-        <a href="#" onclick="window.open('https://86eb6azgo8icpd2l03y4m8qjq0.hop.clickbank.net','_blank');return false;" class="btn-order">
-          Order Now <span class="btn-arrow">→</span>
-        </a>
+      <div class="product-benefits">
+        <span class="benefit-tag">Gut Diversity</span>
+        <span class="benefit-tag">Skin Health</span>
+        <span class="benefit-tag">Immune Support</span>
       </div>
+      <a href="https://86eb6azgo8icpd2l03y4m8qjq0.hop.clickbank.net" target="_blank" class="btn-order">
+        🌿 Order PrimeBiome — Official Site →
+      </a>
     </div>
 
-    <!-- Sumatra -->
     <div class="product-card">
-      <div class="product-icon">🔥</div>
-      <div class="product-info">
-        <div class="product-tag">Metabolism + Gut Lining</div>
-        <div class="product-name">Sumatra Slim Belly Tonic</div>
-        <div class="product-desc">Supports metabolism and gut lining repair. Includes sleep-support botanicals to optimize overnight gut recovery and daily energy levels.</div>
-        <div class="product-benefits">
-          <span class="benefit-tag">Metabolism</span>
-          <span class="benefit-tag">Gut Lining</span>
-          <span class="benefit-tag">Sleep Support</span>
+      <div class="card-top">
+        <div class="product-icon">🔥</div>
+        <div class="product-info">
+          <div class="product-tag">Metabolism + Gut Lining</div>
+          <div class="product-name">Sumatra Slim Belly Tonic</div>
+          <div class="product-desc">Supports metabolism and gut lining repair. Includes sleep-support botanicals to optimize overnight gut recovery and daily energy levels.</div>
         </div>
       </div>
-      <div class="product-cta">
-        <a href="https://920ddaxphhq0x31d26gq17kbfj.hop.clickbank.net" target="_blank" class="btn-order">
-          Order Now <span class="btn-arrow">→</span>
-        </a>
+      <div class="product-benefits">
+        <span class="benefit-tag">Metabolism</span>
+        <span class="benefit-tag">Gut Lining</span>
+        <span class="benefit-tag">Sleep Support</span>
       </div>
+      <a href="https://920ddaxphhq0x31d26gq17kbfj.hop.clickbank.net" target="_blank" class="btn-order">
+        🔥 Order Sumatra Tonic — Official Site →
+      </a>
     </div>
 
-    <!-- Nagano -->
     <div class="product-card">
-      <div class="product-icon">⚡</div>
-      <div class="product-info">
-        <div class="product-tag">Prebiotic Blend + Metabolism</div>
-        <div class="product-name">Nagano Tonic</div>
-        <div class="product-desc">Prebiotic-rich Japanese formula designed to amplify fiber benefits, boost daily energy, and support healthy gut bacterial diversity.</div>
-        <div class="product-benefits">
-          <span class="benefit-tag">Prebiotics</span>
-          <span class="benefit-tag">Energy</span>
-          <span class="benefit-tag">Microbiome</span>
+      <div class="card-top">
+        <div class="product-icon">⚡</div>
+        <div class="product-info">
+          <div class="product-tag">Prebiotic Blend + Metabolism</div>
+          <div class="product-name">Nagano Tonic</div>
+          <div class="product-desc">Prebiotic-rich Japanese formula designed to amplify fiber benefits, boost daily energy, and support healthy gut bacterial diversity.</div>
         </div>
       </div>
-      <div class="product-cta">
-        <a href="https://acf9az9ioap2udecplxer05od2.hop.clickbank.net" target="_blank" class="btn-order">
-          Order Now <span class="btn-arrow">→</span>
-        </a>
+      <div class="product-benefits">
+        <span class="benefit-tag">Prebiotics</span>
+        <span class="benefit-tag">Energy</span>
+        <span class="benefit-tag">Microbiome</span>
       </div>
+      <a href="https://acf9az9ioap2udecplxer05od2.hop.clickbank.net" target="_blank" class="btn-order">
+        ⚡ Order Nagano Tonic — Official Site →
+      </a>
     </div>
 
-    <!-- ProDentim -->
     <div class="product-card">
-      <div class="product-icon">🦷</div>
-      <div class="product-info">
-        <div class="product-tag">Oral + Gut Microbiome</div>
-        <div class="product-name">ProDentim</div>
-        <div class="product-desc">Probiotic blend that supports both oral and gut microbiome balance simultaneously. Targets the mouth-gut axis for full-body microbiome health.</div>
-        <div class="product-benefits">
-          <span class="benefit-tag">Oral Health</span>
-          <span class="benefit-tag">Gut Balance</span>
-          <span class="benefit-tag">Probiotics</span>
+      <div class="card-top">
+        <div class="product-icon">🦷</div>
+        <div class="product-info">
+          <div class="product-tag">Oral + Gut Microbiome</div>
+          <div class="product-name">ProDentim</div>
+          <div class="product-desc">Probiotic blend that supports both oral and gut microbiome balance simultaneously. Targets the mouth-gut axis for full-body microbiome health.</div>
         </div>
       </div>
-      <div class="product-cta">
-        <a href="https://c9d53c0to5r2078f0lq5sqp60b.hop.clickbank.net" target="_blank" class="btn-order">
-          Order Now <span class="btn-arrow">→</span>
-        </a>
+      <div class="product-benefits">
+        <span class="benefit-tag">Oral Health</span>
+        <span class="benefit-tag">Gut Balance</span>
+        <span class="benefit-tag">Probiotics</span>
       </div>
+      <a href="https://c9d53c0to5r2078f0lq5sqp60b.hop.clickbank.net" target="_blank" class="btn-order">
+        🦷 Order ProDentim — Official Site →
+      </a>
     </div>
 
   </div>
 
-  <!-- FREE PDF -->
   <div class="pdf-section">
     <span class="pdf-emoji">📋</span>
     <h2 class="pdf-title">Free <span>7-Day Gut Reset</span> Checklist</h2>
@@ -607,29 +435,26 @@
       Science-backed daily actions to start rebuilding your microbiome.<br>
       Print it, follow it for 7 days, and feel the difference.
     </p>
-    <a href="https://drive.google.com/uc?export=download&id=19VVBXOLO_CwdN8v4iX5h3zwCfaAPWbHY">
+    <a href="https://drive.google.com/uc?export=download&id=19VVBXOLO_CwdN8v4iX5h3zwCfaAPWbHY" target="_blank" class="btn-pdf">
       ⬇ Download Free PDF
     </a>
   </div>
 
-  <!-- YOUTUBE -->
   <div class="youtube-section">
     <p class="yt-label">Watch the full science on YouTube</p>
     <a href="https://www.youtube.com/@GutScienceDaily" target="_blank" class="btn-youtube">
-      <span class="yt-icon">▶</span>
-      Subscribe to Gut Science Daily
+      ▶ Subscribe to Gut Science Daily
     </a>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">🦠 Gut Science Daily</div>
     <p class="disclaimer">
-      AFFILIATE DISCLOSURE: Some links on this page are affiliate links. 
-      Gut Science Daily may earn a commission if you purchase through them, 
-      at no extra cost to you. We only recommend products aligned with our 
-      evidence-based content. This page is for informational purposes only 
-      and does not constitute medical advice. Always consult a healthcare 
+      AFFILIATE DISCLOSURE: Some links on this page are affiliate links.
+      Gut Science Daily may earn a commission if you purchase through them,
+      at no extra cost to you. We only recommend products aligned with our
+      evidence-based content. This page is for informational purposes only
+      and does not constitute medical advice. Always consult a healthcare
       provider before starting any supplement.
     </p>
   </footer>
